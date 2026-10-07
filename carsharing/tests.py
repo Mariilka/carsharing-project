@@ -1,5 +1,6 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
+from .models import Car, Category
 
 # Create your tests here.
 class StudentsViewsetTestCase(TestCase):
@@ -11,13 +12,13 @@ class StudentsViewsetTestCase(TestCase):
         print(r)
 
     def test_get_list(self):
-        сategory = Category.objects.create(
+        catg = Category.objects.create(
             name="Комфорт"
         )
 
         car = Car.objects.create(
             name="Hyundai Solaris",
-            category=category,
+            category=catg,
         )
 
         r = self.client.get('/api/cars/')
@@ -26,5 +27,5 @@ class StudentsViewsetTestCase(TestCase):
 
         assert car.name == data[0]['name']
         assert car.id == data[0]['id']
-        assert car.category.id == data[0]['category']
+        assert car.catg.id == data[0]['catg']
         assert len(data) == 1
