@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Car, Client, Rental, Payment
+from .models import Category, Car, Client, Rental, Region
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,7 +21,12 @@ class RentalSerializer(serializers.ModelSerializer):
         model = Rental
         fields = '__all__'
 
-class PaymentSerializer(serializers.ModelSerializer):
+
+# carsharing/serializers.py
+from rest_framework import serializers
+from .models import Region  
+
+class RegionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Payment
+        model = Region
         fields = '__all__'

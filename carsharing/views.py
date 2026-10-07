@@ -1,10 +1,11 @@
 from django.http import HttpResponse
 from rest_framework import viewsets
-from .models import Category, Car, Client, Rental, Payment
+from .models import Category, Car, Client, Rental, Region
 from .serializers import (
     CategorySerializer, CarSerializer, ClientSerializer,
-    RentalSerializer, PaymentSerializer
+    RentalSerializer,  RegionSerializer,
 )
+
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
@@ -22,6 +23,8 @@ class RentalViewSet(viewsets.ModelViewSet):
     queryset = Rental.objects.all()
     serializer_class = RentalSerializer
 
-class PaymentViewSet(viewsets.ModelViewSet):
-    queryset = Payment.objects.all()
-    serializer_class = PaymentSerializer
+class RegionViewSet(viewsets.ModelViewSet):
+    queryset = Region.objects.all()
+    serializer_class = RegionSerializer
+
+# Avoid top-level import in serializers.py

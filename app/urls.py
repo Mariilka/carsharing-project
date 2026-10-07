@@ -20,15 +20,18 @@ from rest_framework.routers import DefaultRouter
 
 from carsharing.views import (
     CategoryViewSet, CarViewSet, ClientViewSet,
-    RentalViewSet, PaymentViewSet
+    RentalViewSet, RegionViewSet
 )
+from django.contrib import admin
+from django.urls import path
+
 
 router = DefaultRouter()
 router.register(r'categories', CategoryViewSet)
 router.register(r'cars', CarViewSet)
 router.register(r'clients', ClientViewSet)
 router.register(r'rentals', RentalViewSet)
-router.register(r'payments', PaymentViewSet)
+router.register(r'regions', RegionViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

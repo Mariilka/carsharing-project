@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Car, Client, Rental, Payment
+from .models import Region, Car, Category, Client, Rental  
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -13,14 +13,15 @@ class CarAdmin(admin.ModelAdmin):
 
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'last_name', 'phone', 'driver_license')
-    search_fields = ('last_name', 'phone', 'driver_license')
+    list_display = ('id', 'first_name', 'last_name', 'phone' )
+    search_fields = ('last_name', 'phone')
 
 @admin.register(Rental)
 class RentalAdmin(admin.ModelAdmin):
     list_display = ('id', 'car', 'client', 'start_date', 'end_date', 'total_price')
     list_filter = ('start_date', 'end_date')
 
-@admin.register(Payment)
-class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('id', 'rental', 'amount', 'payment_date')
+
+@admin.register(Region)
+class RegionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
